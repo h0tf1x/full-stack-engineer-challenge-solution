@@ -1,14 +1,16 @@
+const ScanResult = require('../models/results')
 
 
 class ResultsService {
 
     /**
+     * List security scan results with pagination
      * 
      * @param {Number} limit 
      * @param {Number} offset 
      */
-    static list(limit, offset) {
-
+    static async list(limit, offset) {
+        ScanResult.find().exec()
     }
 
     /**
@@ -22,7 +24,7 @@ class ResultsService {
      * @param {Date}   data.scanningAt
      * @param {Date}   data.finishedAt
      */
-    static create(data) {
+    static async create(data) {
 
     }
 }
