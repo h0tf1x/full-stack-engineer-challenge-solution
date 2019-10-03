@@ -11,7 +11,7 @@ results.post('/', modelValidationMiddleware(ScanResult), async (req, res) => {
 })
 
 results.get('/', async (req, res) => {
-    const results = await ResultsService.list(req.params.limit, req.params.offset)
+    const results = await ResultsService.list(req.query.limit, req.query.offset)
     return res.json(results)
 })
 

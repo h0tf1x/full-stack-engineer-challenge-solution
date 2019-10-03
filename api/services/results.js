@@ -1,5 +1,6 @@
 const ScanResult = require('../models/results')
 
+const DEFAULT_LIMIT = 10
 
 class ResultsService {
 
@@ -10,7 +11,9 @@ class ResultsService {
      * @param {Number} offset 
      */
     static async list(limit, offset) {
-        ScanResult.find().exec()
+        limit = parseInt(limit) || DEFAULT_LIMIT
+        offset = parseInt(offset) || 0
+        return ScanResult.find().limit(limit).skip(offset).exec()
     }
 
     /**
@@ -24,8 +27,9 @@ class ResultsService {
      * @param {Date}   data.scanningAt
      * @param {Date}   data.finishedAt
      */
-    static async create(data) {
-
+    static create(data) {
+        let result = new ScanResult(data)
+        return result.save()
     }
 }
 
