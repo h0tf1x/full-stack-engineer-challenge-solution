@@ -1,10 +1,10 @@
 FROM node:alpine as build
+ENV NODE_ENV=production
 RUN mkdir /app
 WORKDIR /app
-RUN npm install yarn
+RUN npm install -g yarn
 COPY package.json /app/package.json
 RUN yarn install
-RUN yarn global add react-scripts
 COPY . /app
 RUN yarn build
 

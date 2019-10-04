@@ -1,8 +1,9 @@
-FROM nodejs:10.13.0
+FROM node:alpine
+ENV NODE_ENV=production
 RUN mkdir /app
 WORKDIR /app
 COPY . /app
-RUN npm install yarn
-RUN npm install
-RUN npm install pm2
+RUN npm install -g yarn
+RUN yarn install
+RUN yarn global add pm2
 CMD ["pm2-runtime", "app.js"]
