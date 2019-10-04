@@ -1,12 +1,19 @@
 version: '3'
 
 services:
+  mongo:
+    image: mongo
   frontend:
     build: ./dashboard/
     ports:
       - 80:80
+    depends_on:
+      - backend
   backend:
     build: ./api/
+    environment:
+      - DB_URL=mongodb://mongo:27017/results
     ports:
-      - 80:80
-    
+      - 8000:8000
+    depends_on:
+      - mongo

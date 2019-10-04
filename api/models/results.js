@@ -1,10 +1,12 @@
 const mongoose = require('mongoose')
 
+
 const positionsSchema = new mongoose.Schema({
     begin: {
         line: { type: Number, required: true }
     }
 })
+
 
 const locationSchema = new mongoose.Schema({
     path: {
@@ -17,6 +19,7 @@ const locationSchema = new mongoose.Schema({
     }
 })
 
+
 const metadataSchema = new mongoose.Schema({
     description: {
         type: String,
@@ -28,6 +31,7 @@ const metadataSchema = new mongoose.Schema({
         required: true
     }
 })
+
 
 const findingSchema = new mongoose.Schema({
     type: {
@@ -48,6 +52,7 @@ const findingSchema = new mongoose.Schema({
     }
 })
 
+
 const ScanResult = mongoose.model('ScanResult', {
     status: {
         type: String,
@@ -60,6 +65,18 @@ const ScanResult = mongoose.model('ScanResult', {
     },
     findings: {
         type: [findingSchema]
+    },
+    queuedAt: {
+        type: Date,
+        default: Date.now
+    },
+    scanningAt: {
+        type: Date,
+        default: Date.now
+    },
+    finishedAt: {
+        type: Date,
+        default: Date.now
     }
 })
 

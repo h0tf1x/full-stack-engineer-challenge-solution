@@ -2,6 +2,7 @@ const ScanResult = require('../models/results')
 
 const DEFAULT_LIMIT = 10
 
+
 class ResultsService {
 
     /**
@@ -23,9 +24,6 @@ class ResultsService {
      * @param {String} data.status
      * @param {String} data.repository
      * @param {Array}  data.findings
-     * @param {Date}   data.queuedAt
-     * @param {Date}   data.scanningAt
-     * @param {Date}   data.finishedAt
      */
     static create(data) {
         let result = new ScanResult(data)

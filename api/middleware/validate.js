@@ -1,5 +1,6 @@
 const dot = require('dot-object')
 
+
 /**
  * Prettify errors
  * 
